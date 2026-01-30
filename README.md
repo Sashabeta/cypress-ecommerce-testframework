@@ -1,100 +1,91 @@
-PROJECT OVERVIEW
+# Cypress E2E Automation Framework – SauceDemo
 
-This repository contains an end-to-end (E2E) UI automation framework built with Cypress + JavaScript, using the SauceDemo application as the system under test.
+## Project Overview
+This repository contains an **end-to-end (E2E) UI automation framework** built with **Cypress + JavaScript**, using the **SauceDemo** application as the system under test.
 
 The goal of this project is to demonstrate:
+- Real-world Cypress test design
+- Maintainable **Page Object Model (POM)** without classes
+- Clean test structure suitable for production environments
 
-real-world Cypress test design
+This is a **portfolio project**, intentionally focused on **clarity, scalability, and best practices**, not on maximum test coverage.
 
-maintainable Page Object Model (POM) without classes
+---
 
-clean test structure suitable for production environments
+## Tech Stack
+- **Cypress**
+- **JavaScript (ES6+)**
+- **Page Object Model (POM)**
+- **Custom Cypress Commands**
+- **Fixtures for test data**
 
-This is a portfolio project, intentionally focused on clarity, scalability, and best practices, not on maximum test coverage.
+---
 
-TECH STACK
+## Design Decisions
 
-Cypress
+### Page Object Model (without classes)
+- Page Objects are implemented as **plain objects with functions**
+- Keeps syntax simple and avoids unnecessary abstraction
+- Makes selectors and actions easy to read and maintain
 
-JavaScript (ES6+)
+---
 
-Page Object Model (POM)
+## Selectors Strategy
+- Prefer **`data-test` attributes** where available
+- Selectors are scoped within Page Objects
+- DOM traversal uses **`closest()`** and **`within()`** to avoid flaky tests
 
-Custom Cypress Commands
+---
 
-Fixtures for test data
-
-DESIGN DECISIONS
-
-Page Object Model (without classes)
-
-Page Objects are implemented as plain objects with functions
-
-Keeps syntax simple and avoids unnecessary abstraction
-
-Makes selectors and actions easy to read and maintain
-
-SELECTORS STRATEGY
-
-Prefer data-test attributes where available
-
-Selectors are scoped within Page Objects
-
-DOM traversal uses closest() and within() to avoid flaky tests
-
-CUSTOM COMMANDS
-
-Custom commands are used only for high-level workflows, not UI details:
-
-cy.uiLogin(username, password)
+## Custom Commands
+Custom commands are used only for **high-level workflows**, not UI details:
+- `cy.uiLogin(username, password)`
 
 Low-level actions (clicks, typing, assertions) remain inside Page Objects.
 
-TEST COVERAGE
+---
 
-Authentication:
+## Test Coverage
 
-Login (happy path)
+### Authentication
+- Login (happy path)
+- Negative login scenarios (locked user, invalid credentials)
 
-Negative login scenarios (locked user, invalid credentials)
+### Cart
+- Add item to cart
+- Navigate from cart to checkout
 
-Cart
+### Checkout
+- Checkout Step One (customer info)
+- Checkout Overview
+- Complete purchase (happy path)
 
-Add item to cart
+> E2E tests intentionally focus on **user flow**, not on validating business calculations such as tax or totals.
 
-Navigate from cart to checkout
+---
 
-Checkout
-
-Checkout Step One (customer info)
-
-Checkout Overview
-
-Complete purchase (happy path)
-
-E2E tests intentionally focus on user flow, not on validating business calculations such as tax or totals.
-
-
-What Is Intentionally NOT Tested
-
-
+## What Is Intentionally NOT Tested
 To keep E2E tests stable and meaningful, the following are intentionally excluded:
+- Detailed price or tax calculations
+- UI styling or layout checks
+- Exhaustive field-level validation
+- Component-level logic (better suited for unit tests)
 
-Detailed price/tax calculations
+---
 
-UI styling or layout checks
+## How to Run the Tests
 
-Exhaustive field-level validation
-
-Component-level logic (better suited for unit tests)
-
-How to Run the Tests
-
-Install dependencies
+### Install dependencies
+```bash
 npm install
+```
 
-Open Cypress Test Runner
+### Open Cypress Test Runner
+```bash
 npx cypress open
+```
 
-Run tests headlessly
+### Run tests headlessly 
+```bash 
 npx cypress run
+```
