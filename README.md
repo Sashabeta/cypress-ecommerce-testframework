@@ -1,4 +1,8 @@
-# Cypress E2E Automation Framework – SauceDemo
+# Cypress E2E Automation Framework - SauceDemo
+
+![Cypress E2E](https://github.com/Sashabeta/cypress-ecommerce-testframework/actions/workflows/cypress.yml/badge.svg)
+(https://github.com/Sashabeta/cypress-ecommerce-testframework/actions/workflows/cypress.yml)
+
 
 ## Project Overview
 This repository contains an **end-to-end (E2E) UI automation framework** built with **Cypress + JavaScript**, using the **SauceDemo** application as the system under test.
