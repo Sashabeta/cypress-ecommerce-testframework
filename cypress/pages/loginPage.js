@@ -35,6 +35,16 @@ export const loginPage = {
     this.clickLogin();
   },
 
+   verifyLogedOutState() {
+    // Verify URL is login page
+    cy.url().should("include", "saucedemo.com");
+
+    // Verify key login elements are visible
+    cy.getByTest(usernameInput).should("be.visible");
+    cy.getByTest(passwordInput).should("be.visible");
+    cy.getByTest(loginButton).should("be.visible");
+  },
+
   assertLoginSuccess() {
     cy.url().should("include", "/inventory");
     cy.get(".inventory_list").should("be.visible");
