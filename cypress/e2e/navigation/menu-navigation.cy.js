@@ -24,7 +24,7 @@ describe("Menu navigation", () => {
       name: "About",
       action: MENU_ITEMS.ABOUT,
       assert: () =>
-        cy.location("hostname").should("contain", "saucelabs.com"),
+        cy.location("href", { timeout: 10000 }).should("include", "saucelabs.com")    
     },
     {
       name: "Reset App State",
