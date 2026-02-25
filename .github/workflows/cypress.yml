@@ -9,7 +9,7 @@ on:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repo
@@ -38,3 +38,13 @@ jobs:
           path: |
             cypress/screenshots
             cypress/videos
+      - name: Print environment + versions
+        run: |
+        node -v
+        npm -v
+        npx cypress --version
+        google-chrome --version || true 
+        uname -a
+
+      - name: Print Cypress resolved config
+        run: npx cypress config
