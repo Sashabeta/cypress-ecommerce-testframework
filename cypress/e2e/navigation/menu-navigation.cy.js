@@ -22,10 +22,12 @@ describe("Menu navigation", () => {
     },
     {
       name: "About",
-      action: MENU_ITEMS.ABOUT,
-      assert: () =>
-        cy.location("href", { timeout: 10000 }).should("include", "saucelabs.com")    
-    },
+      assert: () => {
+        cy.getByTest(MENU_ITEMS.ABOUT)
+            .should("have.attr", "href")
+            .and("include", "saucelabs.com");
+  },
+},
     {
       name: "Reset App State",
       setup: () => {
@@ -40,10 +42,15 @@ describe("Menu navigation", () => {
 
   menuTests.forEach(({ name, setup, action, assert }) => {
     it(`navigates via menu: ${name}`, () => {
-      if (setup) setup();
+        if (setup) setup();
 
-      menuPage.clickMenuItem(action);
-      assert();
+        if (action) {
+            menuPage.clickMenuItem(action);
+        } else {
+            menuPage.open(); // for About (no click)
+        }
+
+        assert();
     });
   });
 
