@@ -25,7 +25,9 @@ jobs:
         run: npm ci
 
       - name: Run Cypress tests
-        run: npx cypress run
+        run: npx cypress run --browser chrome
+        env:
+          CI: true
 
       # Upload screenshots/videos only if tests fail (portfolio-friendly)
       - name: Upload Cypress artifacts (on failure)
