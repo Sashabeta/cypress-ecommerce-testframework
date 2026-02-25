@@ -3,6 +3,8 @@ import { inventoryPage } from "../../pages/inventoryPage";
 import { loginPage } from "../../pages/loginPage";
 import { menuPage, MENU_ITEMS } from "../../pages/menuPage";
 
+const shoppingCartBadge = ".shopping_cart_badge";
+
 describe("Menu navigation", () => {
   const { username, password } = users.standard;
   const itemName = "Sauce Labs Backpack";
@@ -28,11 +30,11 @@ describe("Menu navigation", () => {
       name: "Reset App State",
       setup: () => {
         inventoryPage.addItem(itemName);
-        cy.get(".shopping_cart_badge").should("be.visible");
+        cy.get(shoppingCartBadge).should("be.visible");
       },
       action: MENU_ITEMS.RESET,
       assert: () =>
-        cy.get(".shopping_cart_badge").should("not.exist"),
+        cy.get(shoppingCartBadge).should("not.exist"),
     },
   ];
 
