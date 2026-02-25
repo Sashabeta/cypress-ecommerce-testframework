@@ -40,11 +40,11 @@ jobs:
             cypress/videos
       - name: Print environment + versions
         run: |
-        node -v
-        npm -v
-        npx cypress --version
-        google-chrome --version || true 
-        uname -a
+          node -v
+          npm -v
+          npx cypress --version
+          google-chrome --version || true 
+          uname -a
 
       - name: Print Cypress resolved config
         run: npx cypress config
