@@ -1,22 +1,20 @@
 import users from "../../fixtures/users.json";
 import { inventoryPage } from "../../pages/inventoryPage";
 import { cartPage } from "../../pages/cartPage";
-import { loginPage } from "../../pages/loginPage";
 
 const product = {
   name: 'Sauce Labs Backpack',
   slug: 'sauce-labs-backpack'
 }
 
+const { username, password } = users.standard;
+
+beforeEach(() => {
+  cy.visit("/")
+  cy.uiLogin(username, password);
+});
 
 describe("add item to cart", () => {
-  const { username, password } = users.standard;
-
-  beforeEach(() => {
-    cy.visit("/")
-    cy.uiLogin(username, password);
-  });
-
   it("adds a product to cart", () => {
     inventoryPage.addItem(product.name);
     inventoryPage.openCart();
@@ -25,7 +23,9 @@ describe("add item to cart", () => {
     cartPage.assertLoaded();
     cartPage.assertItem(product.name);
   });
+});
 
+describe("remove item from cart", () => {
   it("remove a product from cart", () => {
     inventoryPage.addItem(product.name);
     inventoryPage.openCart();
