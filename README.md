@@ -5,11 +5,14 @@
 
 
 ## Project Overview
-This repository contains an **end-to-end (E2E) UI automation framework** built with **Cypress + JavaScript**, using the **SauceDemo** application as the system under test.
+This repository contains a comprehensive **Test Automation Framework** built with **Cypress and JavaScript**, covering both:
+
+✅ End-to-End (E2E) UI Automation
+✅ REST API Testing
 
 The goal of this project is to demonstrate:
 - Real-world Cypress test design
-- Maintainable **Page Object Model (POM)** without classes
+- Maintainable **Page Object Model (POM)**
 - Clean test structure suitable for production environments
 
 This is a **portfolio project**, intentionally focused on **clarity, scalability, and best practices**, not on maximum test coverage.
@@ -19,6 +22,7 @@ This is a **portfolio project**, intentionally focused on **clarity, scalability
 ## Tech Stack
 - **Cypress**
 - **JavaScript (ES6+)**
+- **REST API**
 - **Page Object Model (POM)**
 - **Custom Cypress Commands**
 - **Fixtures for test data**
@@ -27,9 +31,8 @@ This is a **portfolio project**, intentionally focused on **clarity, scalability
 
 ## Design Decisions
 
-### Page Object Model (without classes)
+### Page Object Model
 - Page Objects are implemented as **plain objects with functions**
-- Keeps syntax simple and avoids unnecessary abstraction
 - Makes selectors and actions easy to read and maintain
 
 ---
@@ -49,7 +52,19 @@ Low-level actions (clicks, typing, assertions) remain inside Page Objects.
 
 ---
 
-## Test Coverage
+## API Test Coverage
+Using public demo API (JSONPlaceholder):
+
+- GET request validation
+- POST request validation
+- PUT request validation
+- DELETE request validation
+- Negative scenario (invalid resource)
+- Status code and response body assertions
+
+---
+
+## UI Test Coverage
 
 ### Authentication
 - Login (happy path)
@@ -57,12 +72,16 @@ Low-level actions (clicks, typing, assertions) remain inside Page Objects.
 
 ### Cart
 - Add item to cart
+- Remove item from cart
 - Navigate from cart to checkout
+
+### Navigation
+- Menu Navigation
 
 ### Checkout
 - Checkout Step One (customer info)
 - Checkout Overview
-- Complete purchase (happy path)
+- Complete Purchase (happy path)
 
 > E2E tests intentionally focus on **user flow**, not on validating business calculations such as tax or totals.
 
