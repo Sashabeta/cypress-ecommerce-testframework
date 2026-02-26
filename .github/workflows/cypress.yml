@@ -45,6 +45,3 @@ jobs:
           npx cypress --version
           google-chrome --version || true 
           uname -a
-
-      - name: Print Cypress resolved config
-        run: npx cypress config
